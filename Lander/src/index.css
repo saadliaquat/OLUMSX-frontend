@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif !important;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.flex {
+  display: flex;
+}
+
+.w-half {
+    width: 50%;
+}
+
+:root {
+  --green-color: #1dbf73;
+  --white-color: #ffffff;
+  --dark-green: #013914;
+  --gray-color: #74767e;
+}

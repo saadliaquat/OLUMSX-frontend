@@ -1,0 +1,222 @@
+.landing-page {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    height: fit-content;
+    background: linear-gradient(to right, #000000 49.5%, #000000 49.5%, #000000 50.5%, #000 50.5%);
+
+    .main-container {
+        display: flex;
+        width: 100%;
+        margin-top: 20px;
+        height: fit-content;
+
+        // @media screen and (max-width: 900px) {
+        //     flex-direction: column;
+        // }
+
+        .inner-container {
+            width: 50%;
+            padding: 0 60px;
+            display: flex;
+            flex-direction: column;
+
+            @media screen and (max-width: 900px) {
+                width: 100%;
+            }
+
+            h1 {
+                font-size: 45px !important;
+                line-height: 56px;
+
+                span {
+                    font-family: 'Noto Serif Display', serif;
+                    font-weight: 600;
+                }
+
+                @media screen and (max-width: 900px) {
+                    font-size: 45px;
+                }
+
+                @media screen and (max-width: 600px) {
+                    font-size: 32px;
+                }
+            }
+
+            .image-container {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            img {
+                color: #fff;
+                width: 80%;
+                height: auto;
+                object-fit: cover;
+                object-position: center;
+
+                // @media screen and (max-width: 900px) {
+                //     display: none;
+                // }
+            }
+
+            // @media screen and (max-width: 900px) {
+            //     top: 100px;
+            //     margin: auto;
+            // }
+        }
+    }
+
+    @media screen and (max-width: 900px) {
+        background-color: #1A1B1D;
+        height: 400px;
+    }
+}
+
+.image-container2 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+        color: #fff;
+        width: 80%;
+        height: auto;
+        object-fit: cover;
+        object-position: center;
+
+        // @media screen and (max-width: 900px) {
+        //     display: none;
+        // }
+    }
+}
+
+.white-gap {
+    width: 4.99%;
+}
+
+.login-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 70%;
+}
+
+.login-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 70%;
+}
+
+.login-center2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    width: 50%;
+}
+
+.login-center h2 {
+    font-size: 35px;
+}
+
+.login-center p {
+    font-weight: 400;
+    font-size: 20px;
+}
+
+form input[type='email'],
+form input[type='password'] {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 16px;
+    border: 0px;
+    border-bottom: 1px solid black;
+    outline: none;
+    box-sizing: border-box;
+    color: #000;
+}
+
+.pass-input-div-login {
+    position: relative !important;
+}
+
+.pass-input-div-login button {
+    font-size: 20px !important;
+    position: absolute;
+    right: 15px;
+    bottom: 30px;
+    background-color: white;
+    border:none;
+    cursor: pointer;
+    outline: none;
+    color: #000;
+}
+
+form button[type='submit'] {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 30px;
+    font-weight: 600;
+    transform: translateY(-20px);
+}
+
+.login-center-buttons {
+    margin-top: 20px !important;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-center-buttons button:nth-child(1) {
+    background-color: rgb(100, 100, 100) !important;
+    color: white;
+    border: 3px solid black;
+    transition: all 1s linear 0ms;
+    transition: color 500ms linear 1ms;
+}
+
+.login-center-buttons button:nth-child(1):hover {
+    color: #333;
+    background-color: white !important;
+}
+
+.login-bottom-p {
+    margin-top: 0px;
+    font-size: 14px;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+  
+    a {
+      color: #0056b3;
+  
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+.login-bottom-p a {
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-bottom-p a:hover {
+    text-decoration: underline;
+}
+
+.pass-input {
+    color:black !important;
+}

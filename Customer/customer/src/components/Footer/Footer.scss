@@ -1,0 +1,114 @@
+.footer {
+    display: flex;
+    justify-content: center;
+    color: #999;
+    background: #fdfdfd;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+
+    img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .container {
+        width: 95%;
+        margin: auto;
+
+        .top {
+            display: flex;
+            justify-content: space-around; // Changed from center to space-around for better distribution
+            gap: 40px;
+            padding: 50px 0;
+
+            .item {
+                width: 200px; // Slightly wider to accommodate longer text
+                display: flex;
+                flex-direction: column;
+                gap: 10px; // Reduced gap for tighter grouping
+
+                h1 {
+                    font-size: 18px; // Larger font size for headings
+                    color: #013914; // Dark green, matches LUMS branding
+                    font-weight: bold; // Bold for emphasis
+                }
+
+                span {
+                    font-weight: 400;
+                    color: #333; // Darker text for better readability
+                    transition: color 0.3s ease; // Smooth transition for hover effects
+
+                    &:hover {
+                        color: #1dbf73; // Highlight color on hover
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            @media screen and (max-width: 900px) {
+                flex-direction: column; // Stack items vertically on smaller screens
+                align-items: center;
+            }
+        }
+
+        hr {
+            width: 100%;
+            border: 0.5px solid #e0e0e0; // Lighter border color for a subtle separation
+        }
+
+        .bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+
+            .left {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+
+                h2 {
+                    color: #013914; // Use LUMS branding color
+                    font-weight: bold;
+                }
+
+                span {
+                    font-size: 14px; // Slightly larger font size
+                }
+            }
+
+            .right {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 30px;
+
+                .social {
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                }
+
+                .link {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+
+                    img {
+                        transition: transform 0.3s ease; // Animation for hover effect on icons
+
+                        &:hover {
+                            transform: scale(1.1); // Scale up icons on hover
+                        }
+                    }
+                }
+            }
+
+            @media screen and (max-width: 900px) {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+        }
+    }
+}

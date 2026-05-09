@@ -22,7 +22,7 @@ function Profile() {
 
   const getUserDetails = async () => {
     try {
-      const response = await fetch("https://olumsx-backend-deploy-new.vercel.app/api/user/getuserbyid", {
+      const response = await fetch("http://localhost:3001/api/user/getuserbyid", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -54,7 +54,7 @@ function Profile() {
       const updatedFormData = { ...formData, userID: userid };
       updatedFormData.password = password_old;
 
-      const response = await fetch('https://olumsx-backend-deploy-new.vercel.app/api/user/updateuser', {
+      const response = await fetch('http://localhost:3001/api/user/updateuser', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'

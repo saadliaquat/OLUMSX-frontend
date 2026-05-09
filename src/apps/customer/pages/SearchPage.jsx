@@ -116,7 +116,7 @@ export default function SearchPage(props) {
     // Fetch products when the component mounts
     useEffect(() => {
         const fetchProducts = async () => {
-            fetch("https://olumsx-backend-deploy-new.vercel.app/api/product/search", {
+            fetch("http://localhost:3001/api/product/search", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ searchQuery: searchQuery }),

@@ -37,8 +37,18 @@ const Navbar = (props) => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const user = useSelector(state => state.user.currentUser);
+  const role = useSelector(state => state.user.role);
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
+
+  // Map the logged-in user's role to their profile route inside the unified
+  // app. Each section owns its own /profile page.
+  const profilePath =
+    role === "Manager"
+      ? "/admin"
+      : role === "Vendor"
+      ? "/vendor/profile"
+      : "/customer/profile";
 
   useEffect(() => {
     const toggleMenu = () => {
@@ -52,7 +62,7 @@ const Navbar = (props) => {
 
   const handleLogout = useCallback(async () => {
     try {
-      await axiosFetch.post("https://olumsx-backend-deploy-new.vercel.app/api/user/logout");
+      await axiosFetch.post("http://localhost:3001/api/user/logout");
       localStorage.removeItem('user');
       dispatch(clearUser());
       navigate("/");
@@ -87,8 +97,7 @@ const Navbar = (props) => {
                 <span>{user.username}</span>
                 {showPanel && (
                   <div className="options">
-                    <Link className="link" to="/profile">Profile</Link>
-                    <Link className="link" to="/settings">Settings</Link>
+                    <Link className="link" to={profilePath}>Profile</Link>
                     <button className="link" onClick={handleLogout}>Logout</button>
                   </div>
                 )}

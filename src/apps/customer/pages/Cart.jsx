@@ -11,7 +11,7 @@ const Cart = () => {
     const [tot_price, setTotalPrice] = useState(0);
 
     const updateTotalPrice = () => {
-        fetch("https://olumsx-backend-deploy-new.vercel.app/api/cart/getcartprice", {
+        fetch("http://localhost:3001/api/cart/getcartprice", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -29,7 +29,7 @@ const Cart = () => {
     };
 
     useEffect(() => {
-        fetch("https://olumsx-backend-deploy-new.vercel.app/api/prodcart/getcartitems", {
+        fetch("http://localhost:3001/api/prodcart/getcartitems", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -48,7 +48,7 @@ const Cart = () => {
     }, []);
 
     const handleRemoveProduct = (productId) => {
-        fetch("https://olumsx-backend-deploy-new.vercel.app/api/prodcart/removefromcart", {
+        fetch("http://localhost:3001/api/prodcart/removefromcart", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -60,10 +60,10 @@ const Cart = () => {
                 if (data.error) {
                     toast.error(data.error);
                     console.log(`error: ${data.error}`);
-                    navigator("/customerHome");
+                    navigator("/customer");
                 } else {
                     toast.success(data.message);
-                    fetch("https://olumsx-backend-deploy-new.vercel.app/api/prodcart/getcartitems", {
+                    fetch("http://localhost:3001/api/prodcart/getcartitems", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
@@ -90,7 +90,7 @@ const Cart = () => {
     };
 
     const handleAddProduct = (productId) => {
-        fetch("https://olumsx-backend-deploy-new.vercel.app/api/prodcart/addtocart", {
+        fetch("http://localhost:3001/api/prodcart/addtocart", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -102,10 +102,10 @@ const Cart = () => {
                 if (data.error) {
                     toast.error(data.error);
                     console.log(`error: ${data.error}`);
-                    navigator("/customerHome");
+                    navigator("/customer");
                 } else {
                     toast.success(data.message);
-                    fetch("https://olumsx-backend-deploy-new.vercel.app/api/prodcart/getcartitems", {
+                    fetch("http://localhost:3001/api/prodcart/getcartitems", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
@@ -138,7 +138,7 @@ const Cart = () => {
             return;
         }
 
-        fetch("https://olumsx-backend-deploy-new.vercel.app/api/orders/createordersdiffvendors", {
+        fetch("http://localhost:3001/api/orders/createordersdiffvendors", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -154,7 +154,7 @@ const Cart = () => {
                     toast.success("Orders placed successfully for each vendor.");
                     console.log("orders placed successfully for each vendor.");
 
-                    fetch("https://olumsx-backend-deploy-new.vercel.app/api/prodcart/getcartitems", {
+                    fetch("http://localhost:3001/api/prodcart/getcartitems", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",

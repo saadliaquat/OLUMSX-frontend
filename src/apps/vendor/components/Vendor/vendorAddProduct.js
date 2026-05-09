@@ -31,7 +31,7 @@ const VendorAddProduct = () => {
   
   const handleAddProduct = () => {
     console.log(product);
-    fetch("https://olumsx-backend-deploy-new.vercel.app/api/product/addproduct", {
+    fetch("http://localhost:3001/api/product/addproduct", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(product),

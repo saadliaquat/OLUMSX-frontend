@@ -29,7 +29,7 @@ const VendorViewOrders = () => {
   const fetchAllProducts = async () => {
     try {
       const response = await fetch (
-        `https://olumsx-backend-deploy-new.vercel.app/api/product/recentproducts?userId=${user_id}`
+        `http://localhost:3001/api/product/recentproducts?userId=${user_id}`
       );
       if (!response.ok) {
         throw new Error ('Failed to fetch products');
@@ -59,7 +59,7 @@ const VendorViewOrders = () => {
       e.preventDefault ();
       try {
         const response = await fetch (
-          `https://olumsx-backend-deploy-new.vercel.app/api/product/updateproduct`,
+          `http://localhost:3001/api/product/updateproduct`,
           {
             method: 'PUT',
             headers: {
@@ -132,7 +132,7 @@ const VendorViewOrders = () => {
   const fetchOrders = async () => {
     try {
       const response = await fetch (
-        'https://olumsx-backend-deploy-new.vercel.app/api/orders/vendororders',
+        'http://localhost:3001/api/orders/vendororders',
         {
           method: 'POST',
           headers: {
@@ -172,7 +172,7 @@ const VendorViewOrders = () => {
     console.log ('Accepting order with ID:', orderId);
     try {
       const response = await fetch (
-        `https://olumsx-backend-deploy-new.vercel.app/api/orders/confirmorder`,
+        `http://localhost:3001/api/orders/confirmorder`,
         {
           method: 'PATCH',
           headers: {
@@ -204,7 +204,7 @@ const VendorViewOrders = () => {
 
   const handleDeleteProduct = async productId => {
     fetch (
-      'https://olumsx-backend-deploy-new.vercel.app/api/product/deleteproduct',
+      'http://localhost:3001/api/product/deleteproduct',
       {
         method: 'DELETE',
         headers: {
@@ -236,7 +236,7 @@ const VendorViewOrders = () => {
     if (orderToDelete !== orderID || !showProductDetails) {
       try {
         const response = await fetch (
-          `https://olumsx-backend-deploy-new.vercel.app/api/orders/fetchproddetails`,
+          `http://localhost:3001/api/orders/fetchproddetails`,
           {
             method: 'POST',
             headers: {

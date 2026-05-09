@@ -111,7 +111,7 @@ export default function ProductGrid(props) {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch('https://olumsx-backend-deploy-new.vercel.app/api/wishlist/fetchwishlist', {
+                const response = await fetch('http://localhost:3001/api/wishlist/fetchwishlist', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

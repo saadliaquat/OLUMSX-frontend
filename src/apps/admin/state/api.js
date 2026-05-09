@@ -5,7 +5,7 @@ export const api = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl:
       import.meta.env.VITE_ADMIN_BASE_URL ||
-      "http://localhost:5001",
+      "http://localhost:3001",
   }), // base url
   reducerPath: "adminApi",
   // tags

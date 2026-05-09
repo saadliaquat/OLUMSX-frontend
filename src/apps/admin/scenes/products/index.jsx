@@ -55,7 +55,7 @@ const Products = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("https://olumsx-backend-deploy-new.vercel.app/api/product/productsadmin");
+        const response = await axios.get("http://localhost:3001/api/product/productsadmin");
         setProducts(response.data);
       } catch (error) {
         console.error("Failed to fetch products:", error);

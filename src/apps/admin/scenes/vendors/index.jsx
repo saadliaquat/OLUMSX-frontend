@@ -13,7 +13,7 @@ const Vendors = () => {
 
   const fetchVendors = async () => {
     try {
-      const response = await axios.get("https://olumsx-backend-deploy-new.vercel.app/api/user/getvendors");
+      const response = await axios.get("http://localhost:3001/api/user/getvendors");
       // console.log(response.data);
       setVendors(response.data);
       setIsLoading(false);
@@ -30,7 +30,7 @@ const Vendors = () => {
   const handleDeleteVendor = async (vendorId) => {
     try {
       // console.log("herehe ", vendorId);
-      const response = await axios.delete('https://olumsx-backend-deploy-new.vercel.app/api/user/deleteuser', {
+      const response = await axios.delete('http://localhost:3001/api/user/deleteuser', {
         data: { userID: vendorId },
       });
   

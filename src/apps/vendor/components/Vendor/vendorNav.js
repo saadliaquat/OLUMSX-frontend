@@ -31,7 +31,7 @@ export default function Navbar({ currentPage }) {
     useEffect(() => {
         const getUserDetails = async () => {
             try {
-                const response = await fetch('https://olumsx-backend-deploy-new.vercel.app/api/user/getuserbyid', {
+                const response = await fetch('http://localhost:3001/api/user/getuserbyid', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -152,7 +152,7 @@ export default function Navbar({ currentPage }) {
                                                         onClick={(e) => {
                                                             console.log("pfft ", localStorage.getItem("user_id"))
                                                             e.preventDefault();
-                                                            fetch(`https://olumsx-backend-deploy-new.vercel.app/api/session/deletesession`, {
+                                                            fetch(`http://localhost:3001/api/session/deletesession`, {
                                                                 method: 'POST',
                                                                 headers: {
                                                                     'Content-Type': 'application/json'
@@ -162,7 +162,9 @@ export default function Navbar({ currentPage }) {
 
                                                             toast.success("Signed out. See you soon!")
                                                             localStorage.clear();
-                                                            window.location.href = 'https://lander-ruby.vercel.app/';
+                                                            // Hard reload to "/" so every section's in-memory
+                                                            // state (Redux, cached trees) is fully reset.
+                                                            window.location.href = '/';
                                                         }}
                                                     >
                                                         Sign out

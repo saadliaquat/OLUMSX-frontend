@@ -25,7 +25,7 @@ export default function ProductPageInfo(props) {
     useEffect(() => {
         const checkIfProductIsWishlisted = async () => {
             try {
-                const response = await axios.post('https://olumsx-backend-deploy-new.vercel.app/api/wishlist/checkwishlist', {
+                const response = await axios.post('http://localhost:3001/api/wishlist/checkwishlist', {
                     client_id: customerID,
                     product_id: product._id
                 });
@@ -44,7 +44,7 @@ export default function ProductPageInfo(props) {
     }, []);
 
     useEffect(() => {
-        axios.post('https://olumsx-backend-deploy-new.vercel.app/api/user/getuserbyid', { UserID: vendorID }, {
+        axios.post('http://localhost:3001/api/user/getuserbyid', { UserID: vendorID }, {
             headers: { 'Content-Type': 'application/json' }
         }).then(response => {
             setVendorName(response.data.username);
@@ -54,7 +54,7 @@ export default function ProductPageInfo(props) {
     }, [vendorID]);
 
     const toggleWishlist = async () => {
-        const url = `https://olumsx-backend-deploy-new.vercel.app/api/wishlist/${isWishlisted ? 'removewishlist' : 'addwishlist'}`;
+        const url = `http://localhost:3001/api/wishlist/${isWishlisted ? 'removewishlist' : 'addwishlist'}`;
         try {
             await axios.post(url, {
                 client_id: customerID,
@@ -88,12 +88,12 @@ export default function ProductPageInfo(props) {
     const navigator = useNavigate(); // For navigation
 
     const handleChatClick = () => {
-        navigator(`/fullchatcustomer/${vendorID}`); // Navigate to chat page
+        navigator(`/customer/fullchatcustomer/${vendorID}`); // Navigate to chat page
     };
 
     const addToCart = async () => {
         try {
-            const response = await fetch(`https://olumsx-backend-deploy-new.vercel.app/api/prodcart/addtocart`, {
+            const response = await fetch(`http://localhost:3001/api/prodcart/addtocart`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ customerID: customerID, productID: product._id })

@@ -43,7 +43,7 @@ function AddReview(props) {
 
         console.log(reviewData);
 
-        fetch('https://olumsx-backend-deploy-new.vercel.app/api/review/addreview', {
+        fetch('http://localhost:3001/api/review/addreview', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

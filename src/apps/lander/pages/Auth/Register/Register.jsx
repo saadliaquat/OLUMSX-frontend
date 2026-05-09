@@ -10,12 +10,21 @@ import { toast } from "react-toastify";
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-  const [token, setToken] = useState(JSON.parse(localStorage.getItem("auth")) || "");
+  const [token, setToken] = useState(
+    JSON.parse(localStorage.getItem("auth")) || "",
+  );
 
   useEffect(() => {
     if (token) {
       toast.info("You are already registered and logged in.");
-      navigate("/dashboard");
+      const role = localStorage.getItem("user_type");
+      const dest =
+        role === "Manager"
+          ? "/admin/dashboard"
+          : role === "Vendor"
+            ? "/vendor"
+            : "/customer";
+      navigate(dest);
     }
   }, [navigate]);
 
@@ -30,7 +39,7 @@ const Register = () => {
       user_type: e.target.user_type.value,
       address: e.target.address.value,
       gender: e.target.gender.value,
-      DOB: e.target.dob.value
+      DOB: e.target.dob.value,
     };
 
     if (formData.password !== e.target.confirmPassword.value) {
@@ -39,19 +48,21 @@ const Register = () => {
     }
 
     try {
-      const response = await fetch("https://olumsx-backend-deploy-new.vercel.app/api/user/signup", {
+      const response = await fetch("http://localhost:3001/api/user/signup", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
       });
       if (response.ok) {
         toast.success("Registration successful.");
         navigate("/");
       } else {
         const errorData = await response.json();
-        toast.error(errorData.error || "Network error or server not responding");
+        toast.error(
+          errorData.error || "Network error or server not responding",
+        );
       }
     } catch (err) {
       toast.error("Network error or server not responding");
@@ -72,16 +83,36 @@ const Register = () => {
             <h2>Welcome to OLumsX!</h2>
             <p>Please enter your credentials to register</p>
             <form onSubmit={handleRegisterSubmit}>
-              <input type="text" placeholder="Username" name="username" required />
-              <input type="text" placeholder="First Name" name="name" required />
-              <input type="text" placeholder="Last Name" name="lastname" required />
+              <input
+                type="text"
+                placeholder="Username"
+                name="username"
+                required
+              />
+              <input
+                type="text"
+                placeholder="First Name"
+                name="name"
+                required
+              />
+              <input
+                type="text"
+                placeholder="Last Name"
+                name="lastname"
+                required
+              />
               <input type="email" placeholder="Email" name="email" required />
               <select name="user_type" required>
                 <option value="Customer">Customer</option>
                 <option value="Manager">Manager</option>
                 <option value="Vendor">Vendor</option>
               </select>
-              <input type="text" placeholder="Address" name="address" required />
+              <input
+                type="text"
+                placeholder="Address"
+                name="address"
+                required
+              />
               <select name="gender" required>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
@@ -89,17 +120,40 @@ const Register = () => {
               </select>
               <input type="date" name="dob" required />
               <div className="pass-input-div">
-                <input type={showPassword ? "text" : "password"} placeholder="Password" name="password" required />
-                {showPassword ? <FaEyeSlash onClick={() => setShowPassword(!showPassword)} /> : <FaEye onClick={() => setShowPassword(!showPassword)} />}
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Password"
+                  name="password"
+                  required
+                />
+                {showPassword ? (
+                  <FaEyeSlash onClick={() => setShowPassword(!showPassword)} />
+                ) : (
+                  <FaEye onClick={() => setShowPassword(!showPassword)} />
+                )}
               </div>
               <div className="pass-input-div">
-                <input type={showPassword ? "text" : "password"} placeholder="Confirm Password" name="confirmPassword" required />
-                {showPassword ? <FaEyeSlash onClick={() => setShowPassword(!showPassword)} /> : <FaEye onClick={() => setShowPassword(!showPassword)} />}
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Confirm Password"
+                  name="confirmPassword"
+                  required
+                />
+                {showPassword ? (
+                  <FaEyeSlash onClick={() => setShowPassword(!showPassword)} />
+                ) : (
+                  <FaEye onClick={() => setShowPassword(!showPassword)} />
+                )}
               </div>
-              <button type="submit" style={{ transform: 'translateY(10px)' }}>Submit</button>
+              <button type="submit" style={{ transform: "translateY(10px)" }}>
+                Submit
+              </button>
             </form>
           </div>
-          <p className="login-bottom-p" style={{ transform: 'translateY(20px)' }}>
+          <p
+            className="login-bottom-p"
+            style={{ transform: "translateY(20px)" }}
+          >
             Already have an account? <Link to="/">Login</Link>
           </p>
         </div>

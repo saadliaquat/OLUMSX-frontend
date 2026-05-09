@@ -13,7 +13,7 @@ const Customers = () => {
 
   const fetchCustomers = async () => {
     try {
-      const response = await axios.get("https://olumsx-backend-deploy-new.vercel.app/api/user/getcustomers");
+      const response = await axios.get("http://localhost:3001/api/user/getcustomers");
       console.log(response.data);
       setCustomers(response.data);
       setIsLoading(false);
@@ -30,7 +30,7 @@ const Customers = () => {
   const handleDeleteCustomer = async (customerId) => {
     try {
       console.log("herehe ", customerId);
-      const response = await axios.delete('https://olumsx-backend-deploy-new.vercel.app/api/user/deleteuser', {
+      const response = await axios.delete('http://localhost:3001/api/user/deleteuser', {
         data: { userID: customerId },
       });
   

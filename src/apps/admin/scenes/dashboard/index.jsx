@@ -11,7 +11,7 @@ const Dashboard = () => {
 
   if (!userId) {
     // fetch latest user session.
-    fetch('https://olumsx-backend-deploy-new.vercel.app/api/session/fetchsession')
+    fetch('http://localhost:3001/api/session/fetchsession')
       .then(response => response.json())
       .then(data => {
         console.log(data);
@@ -37,10 +37,10 @@ const Dashboard = () => {
   const fetchData = async () => {
     try {
       const responses = await Promise.all([
-        axios.get('https://olumsx-backend-deploy-new.vercel.app/api/user/getcustomers'),
-        axios.get('https://olumsx-backend-deploy-new.vercel.app/api/user/getvendors'),
-        axios.get('https://olumsx-backend-deploy-new.vercel.app/api/product/productsadmin'),
-        axios.get('https://olumsx-backend-deploy-new.vercel.app/api/ad/fetchadsall')
+        axios.get('http://localhost:3001/api/user/getcustomers'),
+        axios.get('http://localhost:3001/api/user/getvendors'),
+        axios.get('http://localhost:3001/api/product/productsadmin'),
+        axios.get('http://localhost:3001/api/ad/fetchadsall')
       ]);
       setCustomers(responses[0].data.length);
       setVendors(responses[1].data.length);
@@ -82,7 +82,7 @@ const Dashboard = () => {
     // Implement the deletion logic here
     try {
       console.log("herehe ", userId);
-      const response = await axios.delete('https://olumsx-backend-deploy-new.vercel.app/api/user/deleteuser', {
+      const response = await axios.delete('http://localhost:3001/api/user/deleteuser', {
         data: { userID: userId },
       });
   

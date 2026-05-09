@@ -8,7 +8,7 @@ export default function Home() {
 
   if (!userId) {
     // Fetch latest user session
-    fetch('https://olumsx-backend-deploy-new.vercel.app/api/session/fetchsession')
+    fetch('http://localhost:3001/api/session/fetchsession')
       .then(response => response.json())
       .then(data => {
         console.log(data);

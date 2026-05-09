@@ -33,7 +33,7 @@ export default function DisplayChatCustomer(props) {
         return;
       }
       fetchMessages();
-      const response = await fetch('https://olumsx-backend-deploy-new.vercel.app/api/chat/createmessage', {
+      const response = await fetch('http://localhost:3001/api/chat/createmessage', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ export default function DisplayChatCustomer(props) {
 
   const fetchMessagesFromBackend = async () => {
     try {
-      const response = await fetch('https://olumsx-backend-deploy-new.vercel.app/api/chat/fetchmessages', {
+      const response = await fetch('http://localhost:3001/api/chat/fetchmessages', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

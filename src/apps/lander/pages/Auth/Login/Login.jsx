@@ -10,6 +10,21 @@ import Cookie from 'js-cookie';
 import picture from './loo.svg';
 import './Login.scss';
 
+// Map a user role to its in-app landing route. Used by both the
+// "already logged in" effect and the post-login redirect.
+const routeForRole = (role) => {
+  switch (role) {
+    case "Manager":
+      return "/admin/dashboard";
+    case "Vendor":
+      return "/vendor";
+    case "Customer":
+      return "/customer";
+    default:
+      return "/customer";
+  }
+};
+
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -20,7 +35,7 @@ const Login = () => {
     const token = JSON.parse(localStorage.getItem("auth")) || "";
     if (token) {
       toast.info("You are already logged in.");
-      navigate("/dashboard");
+      navigate(routeForRole(localStorage.getItem("user_type")));
     }
   }, [navigate]);
 
@@ -36,7 +51,7 @@ const Login = () => {
     console.log(formInput)
 
     try {
-      const response = await axios.post('https://olumsx-backend-deploy-new.vercel.app/api/user/login', formInput);
+      const response = await axios.post('http://localhost:3001/api/user/login', formInput);
       console.log(response);
 
       console.log("----SET-----");
@@ -44,18 +59,17 @@ const Login = () => {
       console.log("------------");
 
       dispatch(setUser(response.data.user_id, response.data.user_type));
+      // Persist what the rest of the app expects in localStorage so the other
+      // sections (Customer/Vendor/Admin) can read user_id / user_type after
+      // a hard refresh, and so the "already logged in" effect can route the
+      // user to the right section next time.
+      localStorage.setItem("auth", JSON.stringify(true));
+      localStorage.setItem("userId", response.data.user_id);
+      localStorage.setItem("user_id", response.data.user_id);
+      localStorage.setItem("user_type", response.data.user_type);
       toast.success("Welcome back!");
 
-      if (response.data.user_type === "Manager") {
-        // window.location.href = 'https://admin-ibrahim-cypher10-edvances-projects.vercel.app/dashboard';
-        window.location.href = 'https://admin-tau-cyan.vercel.app/d';
-      } else if (response.data.user_type === "Customer") {
-        // window.location.href = 'https://customer-ibrahim-cypher10-edvances-projects.vercel.app/?_vercel_share=yi5hoIbxrzzAFeM9PpXuiEoAPgCVBJ6n';
-        window.location.href = 'https://customer-theta.vercel.app/';
-      }
-      else if (response.data.user_type === "Vendor") {
-        window.location.href = 'https://vendor-five-delta.vercel.app/';
-      }
+      navigate(routeForRole(response.data.user_type));
 
     } catch (error) {
       console.log(error);

@@ -23,6 +23,8 @@ import {
   GitHub,
 } from "@mui/icons-material";
 
+import { toast } from "react-toastify";
+
 import { FlexBetween } from ".";
 import profileImage from "@admin/assets/profile.jpeg";
 
@@ -40,15 +42,18 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
   // handle
   const handleClick = (event) => setAnchorEl(event.currentTarget);
   const handleClose = () => {
-    fetch(`https://olumsx-backend-deploy-new.vercel.app/api/session/deletesession`, {
-                                                                method: 'POST',
-                                                                headers: {
-                                                                    'Content-Type': 'application/json'
-                                                                },
-                                                                body: JSON.stringify({userID: localStorage.getItem("user_id")}),
-                                                            });
+    fetch(`http://localhost:3001/api/session/deletesession`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ userID: localStorage.getItem("user_id") }),
+    });
+    toast.success("Signed out. See you soon!");
     localStorage.clear();
-    window.location.href = 'https://lander-ruby.vercel.app/';
+    // Hard reload to "/" so every section's in-memory state
+    // (Redux, MUI theme, etc.) is fully reset.
+    window.location.href = '/';
   };
 
   return (

@@ -32,7 +32,7 @@ const VendorHome = () => {
       const userId = localStorage.getItem('userId');
       if (!userId) {
         try {
-          const response = await fetch('https://olumsx-backend-deploy-new.vercel.app/api/session/fetchsession');
+          const response = await fetch('http://localhost:3001/api/session/fetchsession');
           if (response.ok) {
             const data = await response.json();
             localStorage.setItem('userId', data.userID);
@@ -59,7 +59,7 @@ const VendorHome = () => {
       try {
         const userId = localStorage.getItem('userId');
         const response = await axios.get(
-          `https://olumsx-backend-deploy-new.vercel.app/api/product/recentproducts?userId=${userId}&limit=3`
+          `http://localhost:3001/api/product/recentproducts?userId=${userId}&limit=3`
         );
 
         if (response.status === 200) {

@@ -13,7 +13,7 @@ const Advertisements = () => {
 
   const fetchAdvertisements = async () => {
     try {
-      const response = await axios.get("https://olumsx-backend-deploy-new.vercel.app/api/ad/fetchadsall");
+      const response = await axios.get("http://localhost:3001/api/ad/fetchadsall");
       console.log(response.data);
       setAdvertisements(response.data);
       setIsLoading(false);
@@ -31,7 +31,7 @@ const Advertisements = () => {
   const handleDeleteAdvertisement = async (adId) => {
     try {
       console.log(adId)
-      const response = await axios.post("https://olumsx-backend-deploy-new.vercel.app/api/ad/deletead", {
+      const response = await axios.post("http://localhost:3001/api/ad/deletead", {
         data: { adId },
       });
 

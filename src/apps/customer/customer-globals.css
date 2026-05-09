@@ -1,0 +1,16 @@
+/* Customer-only globals \u2014 scoped under .customer-app. Restored from the
+   original Customer/customer/src/index.css that existed before the merge. */
+
+.customer-app a {
+  text-decoration: none !important;
+}
+
+.customer-app .flex-important {
+  display: flex !important;
+}
+
+.customer-app .focus-outline-none:focus {
+  outline: none !important;
+  border: none !important;
+  --tw-ring-shadow: none;
+}

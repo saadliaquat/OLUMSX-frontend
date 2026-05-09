@@ -1,0 +1,28 @@
+/* Lander-only globals \u2014 scoped under .lander-app so they never leak into
+   other sections. Restored from the original Lander/src/index.css that
+   existed before the merge. */
+.lander-app {
+  --green-color: #1dbf73;
+  --white-color: #ffffff;
+  --dark-green: #013914;
+  --gray-color: #74767e;
+}
+
+/* The original Lander forced Montserrat globally with !important. Mirror
+   that here, scoped to the section so other sections (e.g. Admin's MUI
+   typography) keep their own fonts. */
+.lander-app,
+.lander-app * {
+  font-family: "Montserrat", sans-serif !important;
+  font-style: normal;
+}
+
+/* Custom utilities used directly in Lander markup. .flex duplicates a
+   Tailwind utility (intentionally kept for parity with the original). */
+.lander-app .flex {
+  display: flex;
+}
+
+.lander-app .w-half {
+  width: 50%;
+}
